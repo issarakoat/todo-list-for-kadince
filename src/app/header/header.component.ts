@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'firebase';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -13,6 +12,7 @@ export class HeaderComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    this.userService.checkLogin();
     this.userService.getUser().subscribe( user => {
       console.log(user);
       if (user !== null) {
@@ -30,7 +30,6 @@ export class HeaderComponent implements OnInit {
     }).finally( () => {
       console.log('finally done');
       this.router.navigate(['welcome']);
-
   });
   }
 }
