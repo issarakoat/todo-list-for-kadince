@@ -1,3 +1,16 @@
 export const environment = {
-  production: true
+  production: true,
+  firebase : {
+    apiKey: 'AIzaSyD1Os1dHYWaS2hqXQ0ue-VyAcFnFpwVcgA',
+    authDomain: 'todo-list-kadince.firebaseapp.com',
+    databaseURL: 'https://todo-list-kadince.firebaseio.com',
+    projectId: 'todo-list-kadince',
+    storageBucket: 'todo-list-kadince.appspot.com',
+    messagingSenderId: '312973985247',
+    appId: '1:312973985247:web:7627f4ed70caa62218706a',
+    measurementId: 'G-8XX4NK9LS6'
+  },
+  admins : [
+    {email: 'weeravut.issarakoat@gmail.com'}
+  ],
 };
