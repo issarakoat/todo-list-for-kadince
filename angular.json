@@ -40,6 +40,7 @@
               "@firebase/firestore",
               "@firebase/functions",
               "@firebase/auth",
+              "@angular/fire/firestore",
               "@firebase/performance",
               "@firebase/remote-config"
           ]
