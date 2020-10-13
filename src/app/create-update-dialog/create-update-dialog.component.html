@@ -1,0 +1,21 @@
+<mat-dialog-content class="mat-typography">
+  <h3>Create todo item</h3>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <form  #form="ngForm" (submit)='onCreate(form.value)'>
+    <div class="form-group">
+      <textarea
+        class="form-control"
+        id="content"
+        required
+        ngModel
+        name="content"
+        placeholder="ex: walk dog, go shopping"
+      ></textarea>
+    </div>
+    <button type='submit' mat-flat-button color="primary">Add todo Item</button>
+    <button class="ml-1" (click)='onFinishAdding()' mat-flat-button color="warn">Finish Adding</button>
+  </form>
+</mat-dialog-actions>
+

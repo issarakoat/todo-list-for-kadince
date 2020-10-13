@@ -1,1 +1,11 @@
 <p>todo-list works!</p>
+<div class="md-form mt-1 mb-2 pr-5">
+  <input
+  [(ngModel)]='searchStr'
+    class="form-control"
+    type="text"
+    placeholder="Search ..."
+    aria-label="Search"
+  />
+</div>
+<button mat-raised-button (click)="openCreateTodoDialog()">Create Todo</button>
