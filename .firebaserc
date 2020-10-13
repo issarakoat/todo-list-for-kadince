@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "todo-list-kadince": {
+      "hosting": {
+        "todo-list": [
+          "todo-list-kadince"
+        ]
+      }
+    }
+  }
+}
