@@ -20,7 +20,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { HeaderComponent } from './header/header.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { CreateUpdateDialogComponent } from './create-update-dialog/create-update-dialog.component';
+import { CreateDialogComponent } from './create-dialog/create-dialog.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { CreateUpdateDialogComponent } from './create-update-dialog/create-updat
     TodoListComponent,
     HeaderComponent,
     RegisterComponent,
-    CreateUpdateDialogComponent
+    CreateDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -13,12 +13,13 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.checkLogin();
-    this.userService.getUser().subscribe( user => {
+    const unsub = this.userService.getUser().subscribe( user => {
       console.log(user);
       if (user !== null) {
         this.isUser = true;
       }
     });
+    unsub.unsubscribe();
   }
   logout(): void{
     this.userService.onLogout().then(() => {
@@ -26,7 +27,7 @@ export class HeaderComponent implements OnInit {
       this.isUser = false;
 
     }).catch( err => {
-      console.log(err)
+      console.log(err);
     }).finally( () => {
       console.log('finally done');
       this.router.navigate(['welcome']);

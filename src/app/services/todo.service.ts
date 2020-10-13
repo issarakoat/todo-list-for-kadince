@@ -24,12 +24,18 @@ export class TodoService {
     private userService: UserService,
     private afs: AngularFirestore,
   ) {
-    this.userService.getUser().subscribe(user => {
+    const unsub = this.userService.getUser().subscribe(user => {
+      this.userService.checkLogin();
       this.currentUser = user;
-      this.todoCollection = this.afs.collection<Todo>(`${this.currentUser.uid}_todo`);
+      if (this.currentUser){
+        this.todoCollection = this.afs.collection<Todo>(`${this.currentUser.uid}_todo`);
+      }
     });
+    unsub.unsubscribe();
    }
-   onFetchFood(): Observable<Todo[]> {
+   onFetchTodos(): Observable<Todo[]> {
+    console.log('onFetchTodos');
+    console.log(this.currentUser);
     this.todos = this.todoCollection.snapshotChanges().pipe(
       map((actions) =>
         actions.map((a) => {
@@ -44,10 +50,10 @@ export class TodoService {
   onGetTodoById(id: string): Observable<any>{
     return this.afs.collection<Todo>(`${this.currentUser.uid}_todo`).doc(id).valueChanges();
   }
-  onCreateFood(todo: Todo): Promise<DocumentReference> {
+  onCreateTodo(todo: Todo): Promise<DocumentReference> {
     return this.todoCollection.add(todo);
   }
-  onDeleteFood(todo: Todo): void {
+  onDeleteTodo(todo: Todo): void {
     // delete from firestore
     this.afs.doc(`${this.currentUser.uid}_todo/${todo.id}`).delete();
   }

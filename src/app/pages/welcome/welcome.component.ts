@@ -23,15 +23,6 @@ export class WelcomeComponent implements OnInit {
         }
       });
     });
-    this.activateRoute.params.subscribe(params => {
-      if (params.email !== undefined) {
-        setTimeout(() => {
-          this.form.form.patchValue({
-            email: params.email,
-          });
-        });
-      }
-    });
   }
   logInWithGoogle(): void {
     this.userService.onGoogleLogin().then(() => {
