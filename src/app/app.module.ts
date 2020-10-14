@@ -16,7 +16,7 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { HeaderComponent } from './header/header.component';
-import { CreateDialogComponent } from './create-dialog/create-dialog.component';
+import { CreateUpdateDialogComponent } from './create-update-dialog/create-update-dialog.component';
 import { FilterTodosPipe } from './pipes/filter-todos.pipe';
 
 @NgModule({
@@ -24,7 +24,7 @@ import { FilterTodosPipe } from './pipes/filter-todos.pipe';
     AppComponent,
     TodoListComponent,
     HeaderComponent,
-    CreateDialogComponent,
+    CreateUpdateDialogComponent,
     FilterTodosPipe
   ],
   imports: [

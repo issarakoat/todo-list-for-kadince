@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { CreateDialogComponent } from '../create-dialog/create-dialog.component';
+import { CreateUpdateDialogComponent } from '../create-update-dialog/create-update-dialog.component';
 import { TodoService } from '../services/todo.service';
 import { UserService } from '../services/user.service';
 import { Todo } from '../models/todo.model';
@@ -39,7 +39,7 @@ export class TodoListComponent implements OnInit {
     });
   }
   openCreateTodoDialog(): void {
-    const dialogRef = this.dialog.open(CreateDialogComponent);
+    const dialogRef = this.dialog.open(CreateUpdateDialogComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
@@ -54,7 +54,9 @@ export class TodoListComponent implements OnInit {
     this.todoService.onDeleteTodo(id);
   }
   onEdit(todo: Todo): void{
-
+    this.dialog.open(CreateUpdateDialogComponent, {
+      data: todo.id
+    });
   }
   drop(event: CdkDragDrop<string[]>): void {
     moveItemInArray(this.todos, event.previousIndex, event.currentIndex);

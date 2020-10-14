@@ -1,5 +1,6 @@
 <mat-dialog-content class="mat-typography">
-  <h3>Create todo items</h3>
+  <h3 *ngIf="!isUpdate">Create todo items</h3>
+  <h3 *ngIf="isUpdate">Edit todo items</h3>
 
 </mat-dialog-content>
 <mat-dialog-actions align="end">
@@ -14,7 +15,8 @@
         placeholder="ex: walk dog, go shopping"
       ></textarea>
     </div>
-    <button type='submit' mat-flat-button color="primary">Add todo Items</button>
+    <button *ngIf="!isUpdate" type='submit' mat-flat-button color="primary">Add todo Items</button>
+    <button *ngIf="isUpdate" type='button' (click)='onEditItem(form.value)' mat-flat-button color="primary">Edit Todo item</button>
     <button class="ml-1" (click)='onFinishAdding()' mat-flat-button color="accent">Done</button>
   </form>
 </mat-dialog-actions>
