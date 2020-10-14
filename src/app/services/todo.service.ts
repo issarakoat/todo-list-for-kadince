@@ -50,9 +50,9 @@ export class TodoService {
   onCreateTodo(todo: Todo): Promise<DocumentReference> {
     return this.todoCollection.add(todo);
   }
-  onDeleteTodo(todo: Todo): void {
+  onDeleteTodo(id): void {
     // delete from firestore
-    this.afs.doc(`${this.currentUser.uid}_todo/${todo.id}`).delete();
+    this.afs.doc(`${this.currentUser.uid}_todo/${id}`).delete();
   }
   onUpdateComplete(todo: Todo): void {
     todo.completed = !todo.completed;

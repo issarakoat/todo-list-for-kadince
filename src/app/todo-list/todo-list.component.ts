@@ -36,13 +36,19 @@ export class TodoListComponent implements OnInit {
       });
     });
   }
-  openCreateTodoDialog() {
+  openCreateTodoDialog(): void {
     const dialogRef = this.dialog.open(CreateDialogComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
   }
-  onUpdate() {}
-  onDelete() {}
+  onUpdate(todo: Todo): void {
+    console.log('onUpdate');
+    this.todoService.onUpdateComplete(todo);
+  }
+  onDelete(id): void {
+    console.log('onDelete');
+    this.todoService.onDeleteTodo(id);
+  }
 }
