@@ -39,3 +39,15 @@
     </tr>
   </tbody>
 </table>
+
+
+<div cdkDropList class="todo-list" (cdkDropListDropped)="drop($event)">
+  <div class="todo-box" *ngFor="let todo of todos" cdkDrag>
+    {{ todo.content }}
+    <br>
+    <input #checkBox (change)='onUpdate(todo)' [checked]= "todo.completed"  type="checkbox" class="form-check-input" id="checkBox">
+    <br>
+    <button (click)='onEdit(todo)' class="btn btn-warning">Edit</button>
+    <button (click)='onDelete(todo.id)' class="btn btn-danger">delete</button>
+  </div>
+</div>

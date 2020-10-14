@@ -5,6 +5,7 @@ import { CreateDialogComponent } from '../create-dialog/create-dialog.component'
 import { TodoService } from '../services/todo.service';
 import { UserService } from '../services/user.service';
 import { Todo } from '../models/todo.model';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -54,5 +55,8 @@ export class TodoListComponent implements OnInit {
   }
   onEdit(todo: Todo): void{
 
+  }
+  drop(event: CdkDragDrop<string[]>): void {
+    moveItemInArray(this.todos, event.previousIndex, event.currentIndex);
   }
 }
