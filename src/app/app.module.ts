@@ -19,7 +19,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { HeaderComponent } from './header/header.component';
-import { RegisterComponent } from './pages/register/register.component';
 import { CreateDialogComponent } from './create-dialog/create-dialog.component';
 import { FilterTodosPipe } from './pipes/filter-todos.pipe';
 
@@ -28,7 +27,6 @@ import { FilterTodosPipe } from './pipes/filter-todos.pipe';
     AppComponent,
     TodoListComponent,
     HeaderComponent,
-    RegisterComponent,
     CreateDialogComponent,
     FilterTodosPipe
   ],
