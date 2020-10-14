@@ -12,6 +12,7 @@ import { Todo } from '../models/todo.model';
 })
 export class TodoListComponent implements OnInit {
   searchStr = '';
+  filterStr = 'all';
   todos: Todo[] = [];
   isLogin = false;
   constructor(
@@ -50,5 +51,8 @@ export class TodoListComponent implements OnInit {
   onDelete(id): void {
     console.log('onDelete');
     this.todoService.onDeleteTodo(id);
+  }
+  onEdit(todo: Todo): void{
+
   }
 }

@@ -7,6 +7,16 @@
     aria-label="Search"
   />
 </div>
+
+<mat-radio-group aria-label="Select an option"
+[(ngModel)]="filterStr">
+
+  <mat-radio-button [checked]="true" value="all">All</mat-radio-button>
+  <mat-radio-button value="completed">Completed</mat-radio-button>
+  <mat-radio-button value="pending">Pending</mat-radio-button>
+</mat-radio-group>
+<br>
+
 <button mat-raised-button (click)="openCreateTodoDialog()">Create Todos</button>
 
 <table class="table">
@@ -16,13 +26,15 @@
       <th scope="col">todos</th>
       <th scope="col">complete</th>
       <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor='let todo of todos;'>
+    <tr *ngFor="let todo of todos | filterTodos : filterStr">
       <th scope="row">{{ todo.id }}</th>
       <td>{{ todo.content }}</td>
       <td><input #checkBox (change)='onUpdate(todo)' [checked]= "todo.completed"  type="checkbox" class="form-check-input" id="checkBox"> </td>
+      <td><button (click)='onEdit(todo)' class="btn btn-warning">Edit</button></td>
       <td><button (click)='onDelete(todo.id)' class="btn btn-danger">delete</button></td>
     </tr>
   </tbody>

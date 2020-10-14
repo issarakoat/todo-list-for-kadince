@@ -21,6 +21,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { HeaderComponent } from './header/header.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { CreateDialogComponent } from './create-dialog/create-dialog.component';
+import { FilterTodosPipe } from './pipes/filter-todos.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CreateDialogComponent } from './create-dialog/create-dialog.component';
     TodoListComponent,
     HeaderComponent,
     RegisterComponent,
-    CreateDialogComponent
+    CreateDialogComponent,
+    FilterTodosPipe
   ],
   imports: [
     BrowserModule,
