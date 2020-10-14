@@ -24,18 +24,15 @@ export class TodoService {
     private userService: UserService,
     private afs: AngularFirestore,
   ) {
-    const unsub = this.userService.getUser().subscribe(user => {
-      this.userService.checkLogin();
+    this.userService.getUser().subscribe(user => {
       this.currentUser = user;
       if (this.currentUser){
         this.todoCollection = this.afs.collection<Todo>(`${this.currentUser.uid}_todo`);
       }
     });
-    unsub.unsubscribe();
+
    }
    onFetchTodos(): Observable<Todo[]> {
-    console.log('onFetchTodos');
-    console.log(this.currentUser);
     this.todos = this.todoCollection.snapshotChanges().pipe(
       map((actions) =>
         actions.map((a) => {

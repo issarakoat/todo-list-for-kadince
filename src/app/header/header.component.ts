@@ -13,13 +13,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.checkLogin();
-    const unsub = this.userService.getUser().subscribe( user => {
-      console.log(user);
+    this.userService.getUser().subscribe( user => {
       if (user !== null) {
         this.isUser = true;
       }
     });
-    unsub.unsubscribe();
   }
   logout(): void{
     this.userService.onLogout().then(() => {

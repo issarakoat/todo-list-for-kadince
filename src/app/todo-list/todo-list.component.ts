@@ -28,7 +28,6 @@ export class TodoListComponent implements OnInit {
         if (user) {
           this.todoService.onFetchTodos().subscribe((ts) => {
             this.todos = ts;
-            console.log(ts);
           });
         }
         else {
