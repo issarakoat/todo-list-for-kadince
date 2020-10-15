@@ -22,6 +22,8 @@ import { FilterTodosPipe } from './pipes/filter-todos.pipe';
 import { FilterSearchBoxPipe } from './pipes/filter-search-box.pipe';
 import { TestChartComponent } from './test-chart/test-chart.component';
 import { ShortenTextPipe } from './pipes/shorten-text.pipe';
+import { SortByDatePipe } from './pipes/sort-by-date.pipe';
+import { ShowTodoDetailDialogComponent } from './show-todo-detail-dialog/show-todo-detail-dialog.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ShortenTextPipe } from './pipes/shorten-text.pipe';
     FilterTodosPipe,
     FilterSearchBoxPipe,
     TestChartComponent,
-    ShortenTextPipe
+    ShortenTextPipe,
+    SortByDatePipe,
+    ShowTodoDetailDialogComponent
   ],
   imports: [
     BrowserModule,

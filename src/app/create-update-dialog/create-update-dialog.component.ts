@@ -1,13 +1,12 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {
-  MatDialog,
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { TodoService } from '../services/todo.service';
 import { Todo } from '../models/todo.model';
-import { formatCurrency } from '@angular/common';
+
 @Component({
   selector: 'app-create-dialog',
   templateUrl: './create-update-dialog.component.html',

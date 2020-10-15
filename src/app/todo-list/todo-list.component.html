@@ -1,6 +1,6 @@
 <div class="md-form mt-1 mb-2 pr-5">
   <input
-  [(ngModel)]='searchStrBox'
+    [(ngModel)]="searchStrBox"
     class="form-control"
     type="text"
     placeholder="Search todo content ..."
@@ -8,22 +8,51 @@
   />
 </div>
 
-<mat-radio-group aria-label="Select an option"
-[(ngModel)]="filterStr">
-
+<mat-radio-group aria-label="Select an option" [(ngModel)]="filterStr">
   <mat-radio-button [checked]="true" value="all">All</mat-radio-button>
   <mat-radio-button value="completed">Completed</mat-radio-button>
   <mat-radio-button value="pending">Pending</mat-radio-button>
 </mat-radio-group>
-<br>
+<br />
+<mat-radio-group aria-label="Select an option" [(ngModel)]="displayOptionStr">
+  <label id="example-radio-group-label">Display Option</label>
+  <mat-radio-button [checked]="true" value="accending">Accending</mat-radio-button>
+  <mat-radio-button value="decending">Decending</mat-radio-button>
+</mat-radio-group>
+<p> {{ displayOptionStr }} </p>
+<br />
 
 <button mat-raised-button (click)="openCreateTodoDialog()">Create Todos</button>
 
 <div cdkDropList class="todo-list" (cdkDropListDropped)="drop($event)">
-  <div class="todo-box" *ngFor="let todo of todos | filterTodos : filterStr | filterSearchBox : searchStrBox : 'content'" cdkDrag>
-    {{ todo.content | shortenText }}
-    <mat-checkbox (change)='onUpdate(todo)' [checked]= "todo.completed"></mat-checkbox>
-    <button (click)='onEdit(todo)' mat-raised-button style="background-color: yellow;"><i class='far fa-edit' style='font-size:24px'></i></button>
-    <button (click)='onDelete(todo.id)' mat-raised-button color="warn"><i class="fa fa-trash-o" style="font-size:24px"></i></button>
+  <div
+    class="todo-box"
+    *ngFor="
+      let todo of todos
+        | filterTodos: filterStr
+        | filterSearchBox: searchStrBox:'content'
+        | sortByDate
+    "
+    cdkDrag
+  >
+    <div>
+      {{ todo.content | shortenText }}
+      <button (click)='openShowDetailDialog(todo.id)' class="ml-1" mat-raised-button>Detail</button>
+    </div>
+
+    <mat-checkbox
+      (change)="onUpdate(todo)"
+      [checked]="todo.completed"
+    ></mat-checkbox>
+    <button
+      (click)="onEdit(todo)"
+      mat-raised-button
+      style="background-color: yellow"
+    >
+      <i class="far fa-edit" style="font-size: 24px"></i>
+    </button>
+    <button (click)="onDelete(todo.id)" mat-raised-button color="warn">
+      <i class="fa fa-trash-o" style="font-size: 24px"></i>
+    </button>
   </div>
 </div>

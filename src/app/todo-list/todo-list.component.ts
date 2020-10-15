@@ -6,6 +6,7 @@ import { TodoService } from '../services/todo.service';
 import { UserService } from '../services/user.service';
 import { Todo } from '../models/todo.model';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { ShowTodoDetailDialogComponent } from '../show-todo-detail-dialog/show-todo-detail-dialog.component';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -15,6 +16,7 @@ export class TodoListComponent implements OnInit {
   searchStr = '';
   searchStrBox = '';
   filterStr = 'all';
+  displayOptionStr = 'accending';
   todos: Todo[] = [];
   isLogin = false;
   constructor(
@@ -42,6 +44,14 @@ export class TodoListComponent implements OnInit {
   openCreateTodoDialog(): void {
     const dialogRef = this.dialog.open(CreateUpdateDialogComponent);
 
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('dialog is closed');
+    });
+  }
+  openShowDetailDialog(id): void {
+    const dialogRef = this.dialog.open(ShowTodoDetailDialogComponent, {
+      data: id
+    });
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
@@ -51,7 +61,6 @@ export class TodoListComponent implements OnInit {
     this.todoService.onUpdateComplete(todo);
   }
   onDelete(id): void {
-    console.log('onDelete');
     this.todoService.onDeleteTodo(id);
   }
   onEdit(todo: Todo): void{
@@ -61,8 +70,5 @@ export class TodoListComponent implements OnInit {
   }
   drop(event: CdkDragDrop<string[]>): void {
     moveItemInArray(this.todos, event.previousIndex, event.currentIndex);
-  }
-  testID(id): void{
-    console.log(id);
   }
 }
