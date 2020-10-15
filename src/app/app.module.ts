@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { MaterialModule } from './material/material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -19,6 +20,7 @@ import { HeaderComponent } from './header/header.component';
 import { CreateUpdateDialogComponent } from './create-update-dialog/create-update-dialog.component';
 import { FilterTodosPipe } from './pipes/filter-todos.pipe';
 import { FilterSearchBoxPipe } from './pipes/filter-search-box.pipe';
+import { TestChartComponent } from './test-chart/test-chart.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { FilterSearchBoxPipe } from './pipes/filter-search-box.pipe';
     HeaderComponent,
     CreateUpdateDialogComponent,
     FilterTodosPipe,
-    FilterSearchBoxPipe
+    FilterSearchBoxPipe,
+    TestChartComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { FilterSearchBoxPipe } from './pipes/filter-search-box.pipe';
     AngularFireStorageModule,
     AngularFireFunctionsModule,
     MaterialModule,
+    GoogleChartsModule
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent]
