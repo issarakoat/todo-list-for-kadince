@@ -13,6 +13,7 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 })
 export class TodoListComponent implements OnInit {
   searchStr = '';
+  searchStrBox = '';
   filterStr = 'all';
   todos: Todo[] = [];
   isLogin = false;
@@ -60,5 +61,8 @@ export class TodoListComponent implements OnInit {
   }
   drop(event: CdkDragDrop<string[]>): void {
     moveItemInArray(this.todos, event.previousIndex, event.currentIndex);
+  }
+  testID(id): void{
+    console.log(id);
   }
 }

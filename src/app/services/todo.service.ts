@@ -30,7 +30,6 @@ export class TodoService {
         this.todoCollection = this.afs.collection<Todo>(`${this.currentUser.uid}_todo`);
       }
     });
-
    }
    onFetchTodos(): Observable<Todo[]> {
     this.todos = this.todoCollection.snapshotChanges().pipe(
@@ -51,15 +50,21 @@ export class TodoService {
     return this.todoCollection.add(todo);
   }
   onDeleteTodo(id): void {
-    // delete from firestore
-    this.afs.doc(`${this.currentUser.uid}_todo/${id}`).delete();
+    this.afs.doc(`${this.currentUser.uid}_todo/${id}`).delete().catch(err => {
+      console.error(err);
+    });
   }
   onUpdateComplete(todo: Todo): void {
     todo.completed = !todo.completed;
-    this.afs.doc(`${this.currentUser.uid}_todo/${todo.id}`).update(todo);
+    this.afs.doc(`${this.currentUser.uid}_todo/${todo.id}`).update(todo).catch(err => {
+      console.error(err);
+    });
   }
   onEditTodoContent(todo: Todo, newContent: string): void {
+    console.log(`updating new content ${newContent}`);
     todo.content = newContent;
-    this.afs.doc(`${this.currentUser.uid}_todo/${todo.id}`).update(todo);
+    this.afs.doc(`${this.currentUser.uid}_todo/${todo.id}`).update(todo).catch(err => {
+      console.error(err);
+    });
   }
 }

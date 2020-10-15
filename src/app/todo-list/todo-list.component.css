@@ -4,6 +4,7 @@
 
 /* drag stuff */
 .todo-list {
+  margin-top: 10px;
   width: 500px;
   max-width: 100%;
   border: solid 1px #ccc;

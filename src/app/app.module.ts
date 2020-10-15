@@ -18,6 +18,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { HeaderComponent } from './header/header.component';
 import { CreateUpdateDialogComponent } from './create-update-dialog/create-update-dialog.component';
 import { FilterTodosPipe } from './pipes/filter-todos.pipe';
+import { FilterSearchBoxPipe } from './pipes/filter-search-box.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FilterTodosPipe } from './pipes/filter-todos.pipe';
     TodoListComponent,
     HeaderComponent,
     CreateUpdateDialogComponent,
-    FilterTodosPipe
+    FilterTodosPipe,
+    FilterSearchBoxPipe
   ],
   imports: [
     BrowserModule,
