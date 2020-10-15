@@ -21,7 +21,7 @@
 
 <div cdkDropList class="todo-list" (cdkDropListDropped)="drop($event)">
   <div class="todo-box" *ngFor="let todo of todos | filterTodos : filterStr | filterSearchBox : searchStrBox : 'content'" cdkDrag>
-    {{ todo.content }}
+    {{ todo.content | shortenText }}
     <mat-checkbox (change)='onUpdate(todo)' [checked]= "todo.completed"></mat-checkbox>
     <button (click)='onEdit(todo)' mat-raised-button style="background-color: yellow;"><i class='far fa-edit' style='font-size:24px'></i></button>
     <button (click)='onDelete(todo.id)' mat-raised-button color="warn"><i class="fa fa-trash-o" style="font-size:24px"></i></button>

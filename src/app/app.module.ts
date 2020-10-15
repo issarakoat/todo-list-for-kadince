@@ -21,6 +21,7 @@ import { CreateUpdateDialogComponent } from './create-update-dialog/create-updat
 import { FilterTodosPipe } from './pipes/filter-todos.pipe';
 import { FilterSearchBoxPipe } from './pipes/filter-search-box.pipe';
 import { TestChartComponent } from './test-chart/test-chart.component';
+import { ShortenTextPipe } from './pipes/shorten-text.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TestChartComponent } from './test-chart/test-chart.component';
     CreateUpdateDialogComponent,
     FilterTodosPipe,
     FilterSearchBoxPipe,
-    TestChartComponent
+    TestChartComponent,
+    ShortenTextPipe
   ],
   imports: [
     BrowserModule,
