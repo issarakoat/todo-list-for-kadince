@@ -19,6 +19,9 @@ export class TodoListComponent implements OnInit {
   displayOptionStr = 'accending';
   todos: Todo[] = [];
   isLogin = false;
+
+  displayedColumns: string[] = ['content', 'detail', 'completion', 'edit', 'delete'];
+  dataSource = this.todos;
   constructor(
     public dialog: MatDialog,
     private todoService: TodoService,

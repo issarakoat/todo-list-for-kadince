@@ -1,4 +1,4 @@
-import { Component, OnInit , Inject} from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {
   MatDialogRef,
   MAT_DIALOG_DATA,
@@ -12,15 +12,23 @@ import { Todo } from '../models/todo.model';
   styleUrls: ['./show-todo-detail-dialog.component.css']
 })
 export class ShowTodoDetailDialogComponent implements OnInit {
-
+  date: Date;
+  content = '';
   constructor(
     public dialogRef: MatDialogRef<ShowTodoDetailDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string,
     private todoService: TodoService
-  ) {}
+  ) {
+
+  }
 
   ngOnInit(): void {
-    console.log(this.data);
+    this.todoService.onGetTodoById(this.data).subscribe(todo => {
+      // tslint:disable-next-line: radix
+      const date = new Date(parseInt(todo.created));
+      this.date = date;
+      this.content = todo.content;
+    });
   }
 
 }

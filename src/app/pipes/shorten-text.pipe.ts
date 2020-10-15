@@ -6,7 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ShortenTextPipe implements PipeTransform {
 
   transform(value: string): any {
-    return value.substring(0, 10) + '...';
+    let dots = '';
+    if (value.length > 15){
+      dots += ' ...';
+    }
+    return value.substring(0, 15) + dots;
   }
 
 }

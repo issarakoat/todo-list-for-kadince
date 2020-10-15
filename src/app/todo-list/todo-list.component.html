@@ -55,3 +55,57 @@
     </button>
   </div>
 </div>
+
+
+
+
+<table style="width: 100%;" mat-table [dataSource]="todos" class="mat-elevation-z8">
+
+
+  <!-- todo Column -->
+  <ng-container matColumnDef="content">
+    <th mat-header-cell *matHeaderCellDef> Todo </th>
+    <td mat-cell *matCellDef="let todo"> {{todo.content | shortenText}} </td>
+  </ng-container>
+
+  <!-- detail Column -->
+  <ng-container matColumnDef="detail">
+    <th mat-header-cell *matHeaderCellDef> Detail </th>
+    <td class="ml-0" mat-cell *matCellDef="let todo"> <button (click)='openShowDetailDialog(todo.id)' class="ml-1" mat-raised-button>Detail</button> </td>
+  </ng-container>
+
+  <!-- completion Column -->
+  <ng-container matColumnDef="completion">
+    <th mat-header-cell *matHeaderCellDef> Completion </th>
+    <td mat-cell *matCellDef="let todo">
+      <mat-checkbox
+      class="ml-4"
+      (change)="onUpdate(todo)"
+      [checked]="todo.completed"
+    ></mat-checkbox> </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef> Edit </th>
+    <td mat-cell *matCellDef="let todo">     <button
+      (click)="onEdit(todo)"
+      mat-raised-button
+      style="background-color: yellow"
+    >
+      <i class="far fa-edit" style="font-size: 24px"></i>
+    </button> </td>
+  </ng-container>
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef> Delete </th>
+    <td mat-cell *matCellDef="let todo">
+      <button (click)="onDelete(todo.id)" mat-raised-button color="warn">
+        <i class="fa fa-trash-o" style="font-size: 24px"></i>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
