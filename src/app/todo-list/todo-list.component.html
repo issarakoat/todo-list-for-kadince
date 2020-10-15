@@ -19,29 +19,6 @@
 
 <button mat-raised-button (click)="openCreateTodoDialog()">Create Todos</button>
 
-<!-- <table class="table">
-  <thead>
-    <tr >
-      <th scope="col">#</th>
-      <th scope="col">todos</th>
-      <th scope="col">complete</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let todo of todos | filterTodos : filterStr">
-      <th scope="row">{{ todo.id }}</th>
-      <td>{{ todo.content }}</td>
-      <td><mat-checkbox (change)='onUpdate(todo)' [checked]= "todo.completed"></mat-checkbox> </td>
-
-      <td><button (click)='onEdit(todo)' class="btn btn-warning">Edit</button></td>
-      <td><button (click)='onDelete(todo.id)' class="btn btn-danger">delete</button></td>
-    </tr>
-  </tbody>
-</table> -->
-
-
 <div cdkDropList class="todo-list" (cdkDropListDropped)="drop($event)">
   <div class="todo-box" *ngFor="let todo of todos | filterTodos : filterStr | filterSearchBox : searchStrBox : 'content'" cdkDrag>
     {{ todo.content }}

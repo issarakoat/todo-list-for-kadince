@@ -47,6 +47,7 @@ export class TodoService {
     return this.afs.collection<Todo>(`${this.currentUser.uid}_todo`).doc(id).valueChanges();
   }
   onCreateTodo(todo: Todo): Promise<DocumentReference> {
+    todo.completed = false;
     return this.todoCollection.add(todo);
   }
   onDeleteTodo(id): void {
@@ -61,7 +62,6 @@ export class TodoService {
     });
   }
   onEditTodoContent(todo: Todo, newContent: string): void {
-    console.log(`updating new content ${newContent}`);
     todo.content = newContent;
     this.afs.doc(`${this.currentUser.uid}_todo/${todo.id}`).update(todo).catch(err => {
       console.error(err);

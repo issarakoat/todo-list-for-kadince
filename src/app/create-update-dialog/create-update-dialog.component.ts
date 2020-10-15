@@ -30,7 +30,8 @@ export class CreateUpdateDialogComponent implements OnInit {
       this.todoService.onGetTodoById(this.data).subscribe( v => {
         this.addTodoForm.form.patchValue({content: v.content});
         this.currentTodo = v;
-      })
+        console.log(this.currentTodo);
+      });
     }
   }
   onCreate(Form): void {
@@ -40,13 +41,18 @@ export class CreateUpdateDialogComponent implements OnInit {
       completed: false,
       created: new Date().getTime()
     };
-    this.todoService.onCreateTodo(todo);
+    this.todoService.onCreateTodo(todo).catch(err => {
+      console.error(err);
+    }).finally( () => {
+      console.log('finally created');
+    });
     this.addTodoForm.reset();
   }
   onFinishAdding(): void {
     this.dialogRef.close();
   }
   onEditItem(newContent): void{
+    this.currentTodo.id = this.data;
     this.todoService.onEditTodoContent(this.currentTodo, newContent.content);
     this.dialogRef.close();
   }
