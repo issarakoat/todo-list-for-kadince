@@ -16,7 +16,6 @@ import { Todo } from '../models/todo.model';
 })
 export class TodoService {
   private todoCollection: AngularFirestoreCollection<Todo>;
-  private todoDoc: AngularFirestoreDocument<Todo>;
   currentUser: User;
   todos: Observable<Todo[]>;
   currentTodo: Todo;

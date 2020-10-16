@@ -20,13 +20,20 @@
   >
   <mat-radio-button value="decending">Display Decending</mat-radio-button>
 </mat-radio-group>
-<hr>
+<hr />
 
-<button mat-raised-button (click)="openCreateTodoDialog()"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Create Todos</button>
-<button class="ml-2" mat-raised-button (click)="openChartDialog()">
+<button mat-raised-button (click)="openCreateTodoDialog()">
+  <i class="fa fa-plus mr-2" aria-hidden="true"></i>Create Todos
+</button>
+<button class="ml-2 mb-4" mat-raised-button (click)="openChartDialog()">
   <i class="fa fa-pie-chart mr-1" style="font-size: 24px"></i> See Chart
 </button>
 
+<div>
+  <div *ngIf="!isLoading" class="spinner-grow text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
 
 <table class="shadow p-3 mb-5 bg-white rounded table table-condensed mt-2">
   <thead>
@@ -40,46 +47,46 @@
   </thead>
   <tbody>
     <tr
-    *ngFor="
+      *ngFor="
         let todo of todos
-        | filterTodos: filterStr
-        | filterSearchBox: searchStrBox:'content'
-        | displayedTodos: displayOptionStr
-        "
-        >
-        <td>{{ todo.content | shortenText }}</td>
-        <td>
-          <button
+          | filterTodos: filterStr
+          | filterSearchBox: searchStrBox:'content'
+          | displayedTodos: displayOptionStr
+      "
+    >
+      <td>{{ todo.content | shortenText }}</td>
+      <td>
+        <button
           (click)="openShowDetailDialog(todo.id)"
           class="ml-1"
           mat-raised-button
-          >
+        >
           Detail
         </button>
       </td>
       <td>
         <mat-checkbox
-        class="ml-4"
-        (change)="onUpdate(todo)"
-        [checked]="todo.completed"
+          class="ml-4"
+          (change)="onUpdate(todo)"
+          [checked]="todo.completed"
         ></mat-checkbox>
       </td>
       <td>
         <button
-        (click)="onEdit(todo)"
-        mat-raised-button
-        style="background-color: yellow"
+          (click)="onEdit(todo)"
+          mat-raised-button
+          style="background-color: yellow"
         >
-        <i class="far fa-edit" style="font-size: 24px"></i>
-      </button>
-    </td>
-    <td>
-      <button (click)="onDelete(todo.id)" mat-raised-button color="warn">
-        <i class="fa fa-trash-o" style="font-size: 24px"></i>
-      </button>
-    </td>
-  </tr>
-</tbody>
+          <i class="far fa-edit" style="font-size: 24px"></i>
+        </button>
+      </td>
+      <td>
+        <button (click)="onDelete(todo.id)" mat-raised-button color="warn">
+          <i class="fa fa-trash-o" style="font-size: 24px"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 <!-- <div cdkDropList class="todo-list" (cdkDropListDropped)="drop($event)">
