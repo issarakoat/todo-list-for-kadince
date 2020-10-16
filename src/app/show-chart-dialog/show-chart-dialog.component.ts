@@ -10,9 +10,8 @@ export class ShowChartDialogComponent implements OnInit {
 
   title = 'Chart Showing Completion of Todo list';
   type = 'PieChart';
-  data = [
-
-  ];
+  data = [];
+  data_len = 0;
   columnNames = ['Completion', 'Percentage'];
   options = {
   };
@@ -20,6 +19,7 @@ export class ShowChartDialogComponent implements OnInit {
   height = 400;
   constructor(private todoService: TodoService) {
     this.todoService.onFetchTodos().subscribe( todos => {
+      this.data_len = todos.length;
       const completeNum = todos.filter( v => v.completed === true);
       const completPercentage = completeNum.length / todos.length * 100;
       const unCompletePercentage: number = 100 - completPercentage;

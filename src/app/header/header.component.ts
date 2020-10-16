@@ -20,14 +20,13 @@ export class HeaderComponent implements OnInit {
     });
   }
   logout(): void{
-    this.userService.onLogout().then(() => {
+    this.userService.onGoogleLogout().then(() => {
       console.log('succesfully logout');
       this.isUser = false;
 
     }).catch( err => {
       console.log(err);
     }).finally( () => {
-      console.log('finally done');
       this.router.navigate(['welcome']);
   });
   }

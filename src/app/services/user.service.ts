@@ -48,14 +48,6 @@ export class UserService {
       this.isLogin = false;
     });
   }
-  onLogout(): Promise<void> {
-    return this.afAuth.signOut().then(() => {
-      this.currentUser.next(null);
-      this.isLogin = false;
-      localStorage.clear();
-    });
-  }
-
   getUser(): BehaviorSubject<User> {
     return this.currentUser;
   }

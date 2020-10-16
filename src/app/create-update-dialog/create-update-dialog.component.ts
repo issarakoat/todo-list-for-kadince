@@ -34,7 +34,6 @@ export class CreateUpdateDialogComponent implements OnInit {
     }
   }
   onCreate(Form): void {
-    console.log(Form.content);
     const todo: Todo = {
       content: Form.content,
       completed: false,
@@ -43,7 +42,7 @@ export class CreateUpdateDialogComponent implements OnInit {
     this.todoService.onCreateTodo(todo).catch(err => {
       console.error(err);
     }).finally( () => {
-      console.log('finally created');
+      console.log('created');
     });
     this.addTodoForm.reset();
   }

@@ -35,7 +35,8 @@
   </div>
 </div>
 
-<table class="shadow p-3 mb-5 bg-white rounded table table-condensed mt-2">
+<p *ngIf="todos.length === 0">You currently have no tasks!</p>
+<table *ngIf="todos.length > 0" class="shadow p-3 mb-5 bg-white rounded table table-condensed mt-2">
   <thead>
     <tr class="font-weight-light">
       <th>Todo</th>
