@@ -22,8 +22,8 @@ import { FilterTodosPipe } from './pipes/filter-todos.pipe';
 import { FilterSearchBoxPipe } from './pipes/filter-search-box.pipe';
 import { TestChartComponent } from './test-chart/test-chart.component';
 import { ShortenTextPipe } from './pipes/shorten-text.pipe';
-import { SortByDatePipe } from './pipes/sort-by-date.pipe';
 import { ShowTodoDetailDialogComponent } from './show-todo-detail-dialog/show-todo-detail-dialog.component';
+import { DisplayedTodosPipe } from './pipes/displayed-todos.pipe';
 
 @NgModule({
   declarations: [
@@ -35,8 +35,8 @@ import { ShowTodoDetailDialogComponent } from './show-todo-detail-dialog/show-to
     FilterSearchBoxPipe,
     TestChartComponent,
     ShortenTextPipe,
-    SortByDatePipe,
-    ShowTodoDetailDialogComponent
+    ShowTodoDetailDialogComponent,
+    DisplayedTodosPipe
   ],
   imports: [
     BrowserModule,
@@ -50,7 +50,7 @@ import { ShowTodoDetailDialogComponent } from './show-todo-detail-dialog/show-to
     AngularFireStorageModule,
     AngularFireFunctionsModule,
     MaterialModule,
-    GoogleChartsModule
+    GoogleChartsModule,
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent]

@@ -7,10 +7,13 @@ import { UserService } from '../services/user.service';
 import { Todo } from '../models/todo.model';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { ShowTodoDetailDialogComponent } from '../show-todo-detail-dialog/show-todo-detail-dialog.component';
+import { DisplayedTodosPipe } from '../pipes/displayed-todos.pipe';
+
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css'],
+  providers: [DisplayedTodosPipe]
 })
 export class TodoListComponent implements OnInit {
   searchStr = '';
@@ -20,13 +23,11 @@ export class TodoListComponent implements OnInit {
   todos: Todo[] = [];
   isLogin = false;
 
-  displayedColumns: string[] = ['content', 'detail', 'completion', 'edit', 'delete'];
-  dataSource = this.todos;
   constructor(
     public dialog: MatDialog,
     private todoService: TodoService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {

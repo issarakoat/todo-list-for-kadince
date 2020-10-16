@@ -15,10 +15,11 @@
 </mat-radio-group>
 <br />
 <mat-radio-group aria-label="Select an option" [(ngModel)]="displayOptionStr">
-  <mat-radio-button [checked]="true" value="accending">Accending Display</mat-radio-button>
-  <mat-radio-button value="decending">Decending Display</mat-radio-button>
+  <mat-radio-button [checked]="true" value="accending"
+    >Display Accending</mat-radio-button
+  >
+  <mat-radio-button value="decending">Display Decending</mat-radio-button>
 </mat-radio-group>
-<p> {{ displayOptionStr }} </p>
 <br />
 
 <button mat-raised-button (click)="openCreateTodoDialog()">Create Todos</button>
@@ -30,13 +31,19 @@
       let todo of todos
         | filterTodos: filterStr
         | filterSearchBox: searchStrBox:'content'
-        | sortByDate
+        | displayedTodos: displayOptionStr
     "
     cdkDrag
   >
     <div>
       {{ todo.content | shortenText }}
-      <button (click)='openShowDetailDialog(todo.id)' class="ml-1" mat-raised-button>Detail</button>
+      <button
+        (click)="openShowDetailDialog(todo.id)"
+        class="ml-1"
+        mat-raised-button
+      >
+        Detail
+      </button>
     </div>
 
     <mat-checkbox
@@ -56,56 +63,56 @@
   </div>
 </div>
 
-
-
-
-<table style="width: 100%;" mat-table [dataSource]="todos" class="mat-elevation-z8">
-
-
-  <!-- todo Column -->
-  <ng-container matColumnDef="content">
-    <th mat-header-cell *matHeaderCellDef> Todo </th>
-    <td mat-cell *matCellDef="let todo"> {{todo.content | shortenText}} </td>
-  </ng-container>
-
-  <!-- detail Column -->
-  <ng-container matColumnDef="detail">
-    <th mat-header-cell *matHeaderCellDef> Detail </th>
-    <td class="ml-0" mat-cell *matCellDef="let todo"> <button (click)='openShowDetailDialog(todo.id)' class="ml-1" mat-raised-button>Detail</button> </td>
-  </ng-container>
-
-  <!-- completion Column -->
-  <ng-container matColumnDef="completion">
-    <th mat-header-cell *matHeaderCellDef> Completion </th>
-    <td mat-cell *matCellDef="let todo">
-      <mat-checkbox
-      class="ml-4"
-      (change)="onUpdate(todo)"
-      [checked]="todo.completed"
-    ></mat-checkbox> </td>
-  </ng-container>
-
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="edit">
-    <th mat-header-cell *matHeaderCellDef> Edit </th>
-    <td mat-cell *matCellDef="let todo">     <button
-      (click)="onEdit(todo)"
-      mat-raised-button
-      style="background-color: yellow"
+<table class="shadow p-3 mb-5 bg-white rounded table table-condensed mt-2 ">
+  <thead>
+    <tr class="font-weight-light">
+      <th>Todo</th>
+      <th>Detail</th>
+      <th>completion</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="
+        let todo of todos
+          | filterTodos: filterStr
+          | filterSearchBox: searchStrBox:'content'
+          | displayedTodos: displayOptionStr
+      "
     >
-      <i class="far fa-edit" style="font-size: 24px"></i>
-    </button> </td>
-  </ng-container>
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="delete">
-    <th mat-header-cell *matHeaderCellDef> Delete </th>
-    <td mat-cell *matCellDef="let todo">
-      <button (click)="onDelete(todo.id)" mat-raised-button color="warn">
-        <i class="fa fa-trash-o" style="font-size: 24px"></i>
-      </button>
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <td>{{ todo.content | shortenText }}</td>
+      <td>
+        <button
+          (click)="openShowDetailDialog(todo.id)"
+          class="ml-1"
+          mat-raised-button
+        >
+          Detail
+        </button>
+      </td>
+      <td>
+        <mat-checkbox
+          class="ml-4"
+          (change)="onUpdate(todo)"
+          [checked]="todo.completed"
+        ></mat-checkbox>
+      </td>
+      <td>
+        <button
+          (click)="onEdit(todo)"
+          mat-raised-button
+          style="background-color: yellow"
+        >
+          <i class="far fa-edit" style="font-size: 24px"></i>
+        </button>
+      </td>
+      <td>
+        <button (click)="onDelete(todo.id)" mat-raised-button color="warn">
+          <i class="fa fa-trash-o" style="font-size: 24px"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
 </table>
