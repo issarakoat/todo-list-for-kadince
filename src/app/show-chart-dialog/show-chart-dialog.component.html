@@ -1,1 +1,15 @@
-<p>show-chart-dialog works!</p>
+<div mat-dialog-content>
+  <google-chart
+    #chart
+    [title]="title"
+    [type]="type"
+    [data]="data"
+    [options]="options"
+    [width]="width"
+    [height]="height"
+  >
+  </google-chart>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>

@@ -4,12 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { WelcomeComponent } from '../pages/welcome/welcome.component';
 import { TodoListComponent } from '../todo-list/todo-list.component';
 import { NotFoundComponent } from '../pages/not-found/not-found.component';
-import { TestChartComponent } from '../test-chart/test-chart.component';
 const routes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: 'welcome', component: WelcomeComponent},
   { path: 'todo-list', component: TodoListComponent},
-  { path: 'chart', component: TestChartComponent},
   { path: '**', component: NotFoundComponent }
 ];
 
