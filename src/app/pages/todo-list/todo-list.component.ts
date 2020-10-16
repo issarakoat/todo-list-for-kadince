@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { CreateUpdateDialogComponent } from '../create-update-dialog/create-update-dialog.component';
-import { TodoService } from '../services/todo.service';
-import { UserService } from '../services/user.service';
-import { Todo } from '../models/todo.model';
+import { CreateUpdateDialogComponent } from '../../create-update-dialog/create-update-dialog.component';
+import { TodoService } from '../../services/todo.service';
+import { UserService } from '../../services/user.service';
+import { Todo } from '../../models/todo.model';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
-import { ShowTodoDetailDialogComponent } from '../show-todo-detail-dialog/show-todo-detail-dialog.component';
-import { DisplayedTodosPipe } from '../pipes/displayed-todos.pipe';
-import { ShowChartDialogComponent } from '../show-chart-dialog/show-chart-dialog.component';
+import { ShowTodoDetailDialogComponent } from '../../show-todo-detail-dialog/show-todo-detail-dialog.component';
+import { DisplayedTodosPipe } from '../../pipes/displayed-todos.pipe';
+import { ShowChartDialogComponent } from '../../show-chart-dialog/show-chart-dialog.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -53,7 +53,9 @@ export class TodoListComponent implements OnInit {
     this.dialog.open(ShowChartDialogComponent);
   }
   openShowDetailDialog(id): void {
-    const dialogRef = this.dialog.open(ShowTodoDetailDialogComponent);
+    this.dialog.open(ShowTodoDetailDialogComponent, {
+      data: id
+    });
   }
   onUpdate(todo: Todo): void {
     console.log('onUpdate');

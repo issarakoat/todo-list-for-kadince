@@ -12,7 +12,7 @@ import { Todo } from '../models/todo.model';
   styleUrls: ['./show-todo-detail-dialog.component.css']
 })
 export class ShowTodoDetailDialogComponent implements OnInit {
-  date: Date;
+  date: Date = new Date;
   content = '';
   constructor(
     public dialogRef: MatDialogRef<ShowTodoDetailDialogComponent>,
@@ -23,8 +23,8 @@ export class ShowTodoDetailDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.data);
     this.todoService.onGetTodoById(this.data).subscribe(todo => {
-      // tslint:disable-next-line: radix
       const date = new Date(parseInt(todo.created));
       this.date = date;
       this.content = todo.content;

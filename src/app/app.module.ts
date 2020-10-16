@@ -15,7 +15,7 @@ import { AngularFireFunctionsModule } from '@angular/fire/functions';
 
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { TodoListComponent } from './todo-list/todo-list.component';
+import { TodoListComponent } from './pages/todo-list/todo-list.component';
 import { HeaderComponent } from './header/header.component';
 import { CreateUpdateDialogComponent } from './create-update-dialog/create-update-dialog.component';
 import { FilterTodosPipe } from './pipes/filter-todos.pipe';

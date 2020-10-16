@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { WelcomeComponent } from '../pages/welcome/welcome.component';
-import { TodoListComponent } from '../todo-list/todo-list.component';
+import { TodoListComponent } from '../pages/todo-list/todo-list.component';
 import { NotFoundComponent } from '../pages/not-found/not-found.component';
 const routes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
