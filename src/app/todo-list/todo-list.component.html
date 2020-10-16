@@ -20,11 +20,69 @@
   >
   <mat-radio-button value="decending">Display Decending</mat-radio-button>
 </mat-radio-group>
-<br />
+<hr>
 
-<button mat-raised-button (click)="openCreateTodoDialog()">Create Todos</button>
+<button mat-raised-button (click)="openCreateTodoDialog()"><i class="fa fa-plus mr-2" aria-hidden="true"></i>Create Todos</button>
+<button class="ml-2" mat-raised-button (click)="openChartDialog()">
+  <i class="fa fa-pie-chart mr-1" style="font-size: 24px"></i> See Chart
+</button>
 
-<div cdkDropList class="todo-list" (cdkDropListDropped)="drop($event)">
+
+<table class="shadow p-3 mb-5 bg-white rounded table table-condensed mt-2">
+  <thead>
+    <tr class="font-weight-light">
+      <th>Todo</th>
+      <th>Detail</th>
+      <th>completion</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+    *ngFor="
+        let todo of todos
+        | filterTodos: filterStr
+        | filterSearchBox: searchStrBox:'content'
+        | displayedTodos: displayOptionStr
+        "
+        >
+        <td>{{ todo.content | shortenText }}</td>
+        <td>
+          <button
+          (click)="openShowDetailDialog(todo.id)"
+          class="ml-1"
+          mat-raised-button
+          >
+          Detail
+        </button>
+      </td>
+      <td>
+        <mat-checkbox
+        class="ml-4"
+        (change)="onUpdate(todo)"
+        [checked]="todo.completed"
+        ></mat-checkbox>
+      </td>
+      <td>
+        <button
+        (click)="onEdit(todo)"
+        mat-raised-button
+        style="background-color: yellow"
+        >
+        <i class="far fa-edit" style="font-size: 24px"></i>
+      </button>
+    </td>
+    <td>
+      <button (click)="onDelete(todo.id)" mat-raised-button color="warn">
+        <i class="fa fa-trash-o" style="font-size: 24px"></i>
+      </button>
+    </td>
+  </tr>
+</tbody>
+</table>
+
+<!-- <div cdkDropList class="todo-list" (cdkDropListDropped)="drop($event)">
   <div
     class="todo-box"
     *ngFor="
@@ -61,58 +119,4 @@
       <i class="fa fa-trash-o" style="font-size: 24px"></i>
     </button>
   </div>
-</div>
-
-<table class="shadow p-3 mb-5 bg-white rounded table table-condensed mt-2 ">
-  <thead>
-    <tr class="font-weight-light">
-      <th>Todo</th>
-      <th>Detail</th>
-      <th>completion</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      *ngFor="
-        let todo of todos
-          | filterTodos: filterStr
-          | filterSearchBox: searchStrBox:'content'
-          | displayedTodos: displayOptionStr
-      "
-    >
-      <td>{{ todo.content | shortenText }}</td>
-      <td>
-        <button
-          (click)="openShowDetailDialog(todo.id)"
-          class="ml-1"
-          mat-raised-button
-        >
-          Detail
-        </button>
-      </td>
-      <td>
-        <mat-checkbox
-          class="ml-4"
-          (change)="onUpdate(todo)"
-          [checked]="todo.completed"
-        ></mat-checkbox>
-      </td>
-      <td>
-        <button
-          (click)="onEdit(todo)"
-          mat-raised-button
-          style="background-color: yellow"
-        >
-          <i class="far fa-edit" style="font-size: 24px"></i>
-        </button>
-      </td>
-      <td>
-        <button (click)="onDelete(todo.id)" mat-raised-button color="warn">
-          <i class="fa fa-trash-o" style="font-size: 24px"></i>
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+</div> -->

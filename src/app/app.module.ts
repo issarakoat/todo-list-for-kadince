@@ -24,6 +24,7 @@ import { TestChartComponent } from './test-chart/test-chart.component';
 import { ShortenTextPipe } from './pipes/shorten-text.pipe';
 import { ShowTodoDetailDialogComponent } from './show-todo-detail-dialog/show-todo-detail-dialog.component';
 import { DisplayedTodosPipe } from './pipes/displayed-todos.pipe';
+import { ShowChartDialogComponent } from './show-chart-dialog/show-chart-dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DisplayedTodosPipe } from './pipes/displayed-todos.pipe';
     TestChartComponent,
     ShortenTextPipe,
     ShowTodoDetailDialogComponent,
-    DisplayedTodosPipe
+    DisplayedTodosPipe,
+    ShowChartDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import { Todo } from '../models/todo.model';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { ShowTodoDetailDialogComponent } from '../show-todo-detail-dialog/show-todo-detail-dialog.component';
 import { DisplayedTodosPipe } from '../pipes/displayed-todos.pipe';
+import { ShowChartDialogComponent } from '../show-chart-dialog/show-chart-dialog.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -46,19 +47,13 @@ export class TodoListComponent implements OnInit {
     });
   }
   openCreateTodoDialog(): void {
-    const dialogRef = this.dialog.open(CreateUpdateDialogComponent);
-
-    dialogRef.afterClosed().subscribe(() => {
-      console.log('dialog is closed');
-    });
+    this.dialog.open(CreateUpdateDialogComponent);
+  }
+  openChartDialog(): void {
+    this.dialog.open(ShowChartDialogComponent);
   }
   openShowDetailDialog(id): void {
-    const dialogRef = this.dialog.open(ShowTodoDetailDialogComponent, {
-      data: id
-    });
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
+    const dialogRef = this.dialog.open(ShowTodoDetailDialogComponent);
   }
   onUpdate(todo: Todo): void {
     console.log('onUpdate');
