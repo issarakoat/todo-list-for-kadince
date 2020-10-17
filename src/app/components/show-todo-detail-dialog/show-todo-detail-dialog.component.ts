@@ -27,7 +27,7 @@ export class ShowTodoDetailDialogComponent implements OnInit {
       const date = new Date(parseInt(todo.created));
       this.date = date;
       this.content = todo.content;
-      this.status = todo.completed === true ? 'Completed' : 'Uncomplete';
+      this.status = todo.completed === true ? 'Completed' : 'Incomplete';
     });
   }
 
