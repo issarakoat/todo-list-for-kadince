@@ -4,8 +4,8 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { TodoService } from '../services/todo.service';
-import { Todo } from '../models/todo.model';
+import { TodoService } from '../../services/todo.service';
+import { Todo } from '../../models/todo.model';
 
 @Component({
   selector: 'app-create-dialog',
@@ -29,7 +29,6 @@ export class CreateUpdateDialogComponent implements OnInit {
       this.todoService.onGetTodoById(this.data).subscribe( v => {
         this.addTodoForm.form.patchValue({content: v.content});
         this.currentTodo = v;
-        console.log(this.currentTodo);
       });
     }
   }

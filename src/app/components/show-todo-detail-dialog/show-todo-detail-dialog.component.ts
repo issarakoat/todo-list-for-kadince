@@ -3,7 +3,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { TodoService } from '../services/todo.service';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-show-todo-detail-dialog',

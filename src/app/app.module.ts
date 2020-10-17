@@ -16,14 +16,14 @@ import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TodoListComponent } from './pages/todo-list/todo-list.component';
-import { HeaderComponent } from './header/header.component';
-import { CreateUpdateDialogComponent } from './create-update-dialog/create-update-dialog.component';
+import { HeaderComponent } from './components/header/header.component';
+import { CreateUpdateDialogComponent } from './components/create-update-dialog/create-update-dialog.component';
 import { FilterTodosPipe } from './pipes/filter-todos.pipe';
 import { FilterSearchBoxPipe } from './pipes/filter-search-box.pipe';
 import { ShortenTextPipe } from './pipes/shorten-text.pipe';
-import { ShowTodoDetailDialogComponent } from './show-todo-detail-dialog/show-todo-detail-dialog.component';
+import { ShowTodoDetailDialogComponent } from './components/show-todo-detail-dialog/show-todo-detail-dialog.component';
 import { DisplayedTodosPipe } from './pipes/displayed-todos.pipe';
-import { ShowChartDialogComponent } from './show-chart-dialog/show-chart-dialog.component';
+import { ShowChartDialogComponent } from './components/show-chart-dialog/show-chart-dialog.component';
 
 @NgModule({
   declarations: [

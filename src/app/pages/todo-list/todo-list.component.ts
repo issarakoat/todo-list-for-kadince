@@ -1,20 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { CreateUpdateDialogComponent } from '../../create-update-dialog/create-update-dialog.component';
+import { CreateUpdateDialogComponent } from '../../components/create-update-dialog/create-update-dialog.component';
 import { TodoService } from '../../services/todo.service';
 import { UserService } from '../../services/user.service';
 import { Todo } from '../../models/todo.model';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
-import { ShowTodoDetailDialogComponent } from '../../show-todo-detail-dialog/show-todo-detail-dialog.component';
-import { DisplayedTodosPipe } from '../../pipes/displayed-todos.pipe';
-import { ShowChartDialogComponent } from '../../show-chart-dialog/show-chart-dialog.component';
+import { ShowTodoDetailDialogComponent } from '../../components/show-todo-detail-dialog/show-todo-detail-dialog.component';
+import { ShowChartDialogComponent } from '../../components/show-chart-dialog/show-chart-dialog.component';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css'],
-  providers: [DisplayedTodosPipe]
 })
 export class TodoListComponent implements OnInit {
   searchStr = '';
@@ -60,7 +57,6 @@ export class TodoListComponent implements OnInit {
     });
   }
   onUpdate(todo: Todo): void {
-    console.log('onUpdate');
     this.todoService.onUpdateComplete(todo);
   }
   onDelete(id): void {
@@ -70,8 +66,5 @@ export class TodoListComponent implements OnInit {
     this.dialog.open(CreateUpdateDialogComponent, {
       data: todo.id
     });
-  }
-  drop(event: CdkDragDrop<string[]>): void {
-    moveItemInArray(this.todos, event.previousIndex, event.currentIndex);
   }
 }

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
-  AngularFirestoreDocument,
   DocumentReference,
 } from '@angular/fire/firestore';
 import { UserService } from '../services/user.service';
@@ -52,18 +51,24 @@ export class TodoService {
   onDeleteTodo(id): void {
     this.afs.doc(`${this.currentUser.uid}_todo/${id}`).delete().catch(err => {
       console.error(err);
+    }).finally( () => {
+      console.log('successfully deleted');
     });
   }
   onUpdateComplete(todo: Todo): void {
     todo.completed = !todo.completed;
     this.afs.doc(`${this.currentUser.uid}_todo/${todo.id}`).update(todo).catch(err => {
       console.error(err);
+    }).finally( () => {
+      console.log('successfully update');
     });
   }
   onEditTodoContent(todo: Todo, newContent: string): void {
     todo.content = newContent;
     this.afs.doc(`${this.currentUser.uid}_todo/${todo.id}`).update(todo).catch(err => {
       console.error(err);
+    }).finally( () => {
+      console.log('successfully edited content');
     });
   }
 }
