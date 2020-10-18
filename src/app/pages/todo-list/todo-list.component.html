@@ -16,9 +16,11 @@
 <br />
 <mat-radio-group aria-label="Select an option" [(ngModel)]="displayOptionStr">
   <mat-radio-button [checked]="true" value="accending"
-    >Display Accending</mat-radio-button
-  >
-  <mat-radio-button value="decending">Display Decending</mat-radio-button>
+    ><i class="fas fa-angle-double-down" style="font-size: 24px"></i
+  ></mat-radio-button>
+  <mat-radio-button value="decending"
+    ><i class="fas fa-angle-double-up" style="font-size: 24px"></i
+  ></mat-radio-button>
 </mat-radio-group>
 <hr />
 
@@ -59,7 +61,7 @@
     >
       <td>
         {{ todo.content | shortenText }}
-        <br>
+        <br />
         <button
           (click)="openShowDetailDialog(todo.id)"
           class="ml-1"
