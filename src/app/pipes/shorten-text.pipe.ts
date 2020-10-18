@@ -7,10 +7,10 @@ export class ShortenTextPipe implements PipeTransform {
 
   transform(value: string): any {
     let dots = '';
-    if (value.length > 15){
+    if (value.length > 25){
       dots += '....';
     }
-    return value.substring(0, 15) + dots;
+    return value.substring(0, 25) + dots;
   }
 
 }

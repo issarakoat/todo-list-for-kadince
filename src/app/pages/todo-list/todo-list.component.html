@@ -30,17 +30,19 @@
 </button>
 
 <div>
-  <div *ngIf="!isLoading" class="spinner-grow text-primary" role="status">
+  <div *ngIf="isLoading" class="spinner-grow text-primary" role="status">
     <span class="sr-only">Loading...</span>
   </div>
 </div>
 
 <p *ngIf="todos.length === 0">You currently have no tasks!</p>
-<table *ngIf="todos.length > 0" class="shadow p-3 mb-5 bg-white rounded table table-condensed mt-2">
+<table
+  *ngIf="todos.length > 0"
+  class="shadow p-3 mb-5 bg-white rounded table table-condensed mt-2"
+>
   <thead>
     <tr class="font-weight-light">
       <th>Todo</th>
-      <th>Detail</th>
       <th>complete</th>
       <th>Edit</th>
       <th>Delete</th>
@@ -55,8 +57,9 @@
           | displayedTodos: displayOptionStr
       "
     >
-      <td>{{ todo.content | shortenText }}</td>
       <td>
+        {{ todo.content | shortenText }}
+        <br>
         <button
           (click)="openShowDetailDialog(todo.id)"
           class="ml-1"
@@ -89,4 +92,3 @@
     </tr>
   </tbody>
 </table>
-

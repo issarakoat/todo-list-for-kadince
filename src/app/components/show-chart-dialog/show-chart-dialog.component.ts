@@ -7,7 +7,7 @@ import { TodoService } from '../../services/todo.service';
   styleUrls: ['./show-chart-dialog.component.css']
 })
 export class ShowChartDialogComponent implements OnInit {
-
+  isLoading = true;
   title = 'Chart Showing Completion of Todo list';
   type = 'PieChart';
   data = [];
@@ -24,6 +24,7 @@ export class ShowChartDialogComponent implements OnInit {
       const completPercentage = completeNum.length / todos.length * 100;
       const inCompletePercentage: number = 100 - completPercentage;
       this.data = [['Complete', completPercentage], ['Incomplete', inCompletePercentage]];
+      this.isLoading = false;
     });
    }
 

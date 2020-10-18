@@ -20,7 +20,7 @@ export class TodoListComponent implements OnInit {
   displayOptionStr = 'accending';
   todos: Todo[] = [];
   isLogin = false;
-  isLoading = false;
+  isLoading = true;
 
   constructor(
     public dialog: MatDialog,
@@ -36,7 +36,7 @@ export class TodoListComponent implements OnInit {
         if (user) {
           this.todoService.onFetchTodos().subscribe((ts) => {
             this.todos = ts;
-            this.isLoading = true;
+            this.isLoading = false;
           });
         }
         else {
